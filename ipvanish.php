@@ -124,16 +124,6 @@ $domainlist = array(
 	"sea-a03.ipvanish.com"
 );
 
-$iplist = array();
-foreach ($domainlist as $hostname) {
-	$hosts = gethostbynamel($hostname);
-	if (is_array($hosts)) {
-		foreach ($hosts as $ip) {
-			$iplist[] = $ip;
-		}
-	}
-}
-
 $list = "# List distributed by luenwarneke.com/ipvanish\n";
 $list .= "
 IPVanish VPN DNS:198.168.0.1-198.168.0.2
@@ -163,11 +153,19 @@ IPVanish VPN network/local/netmask:255.255.252.0-255.255.252.0
 IPVanish VPN MASK:0.0.0.0-0.0.0.0
 IPVanish VPN MASK:128.0.0.0-128.0.0.0\n";
 
-foreach ($iplist as $ip) {
-	$list .= "IPVanish VPN:".$ip."-".$ip."\n";
+//$iplist = array();
+foreach ($domainlist as $hostname) {
+	$hosts = gethostbynamel($hostname);
+	if (is_array($hosts)) {
+		foreach ($hosts as $ip) {
+			//$iplist[] = $ip;
+			$list .= "IPVanish VPN ".$hostname.":".$ip."-".$ip."\n";
+		}
+	}
 }
+	
 
-//echo $list;
-file_put_contents('ipvanish-allowlist4.txt',$list);
+echo $list;
+file_put_contents('ipvanish-allowlist.txt',$list);
 
 ?>
