@@ -1,6 +1,7 @@
 <?php 
 
 $domainlist = array(
+	"www.ipvanish.com",
 	"tia-c01.ipvanish.com",
 	"eze-c01.ipvanish.com",
 	"syd-a01.ipvanish.com",
