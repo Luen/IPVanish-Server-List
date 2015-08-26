@@ -124,7 +124,7 @@ $domainlist = array(
 	"sea-a03.ipvanish.com"
 );
 
-$list = "# List distributed by luenwarneke.com/ipvanish\n";
+$list = "# List distributed by http://code.luenwarneke.com/ipvanish\n";
 $list .= "
 IPVanish VPN DNS:198.168.0.1-198.168.0.2
 IPVanish VPN DNS:198.18.0.1-198.18.0.2
@@ -165,9 +165,9 @@ foreach ($domainlist as $hostname) {
 		}
 	}
 }
-	
 
 echo $list;
-file_put_contents('ipvanish-allowlist.txt',$list);
+
+file_put_contents(dirname(__DIR__).'/ipvanish/ipvanish-allowlist.txt',$list);
 
 ?>
